@@ -1,7 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 const Form = (props) => {
-	return ( 
+  // Create appointments' state
+
+  const [appointment, updateAppointment] = useState({
+    name: '',
+    owner: '',
+    date: '',
+    time: '',
+    symptoms: ''
+  })
+
+  const handleChange = e => {
+    console.log(e.target.value);
+  }
+
+  return ( 
 		<Fragment>
       <h2>Create Appointment</h2>
       <form>
@@ -11,6 +25,7 @@ const Form = (props) => {
           name="pet"
           className="u-full-width"
           placeholder="Pet's Name"
+          onChange={handleChange}
         />
 
         <label>Owner's Name</label>
@@ -19,6 +34,7 @@ const Form = (props) => {
           name="owner"
           className="u-full-width"
           placeholder="Pet Owner's Name"
+          onChange={handleChange}
         />
 
         <label>Date</label>
@@ -26,6 +42,7 @@ const Form = (props) => {
           type="date"
           name="date"
           className="u-full-width"
+          onChange={handleChange}
         />
 
         <label>Check In Time</label>
@@ -33,12 +50,15 @@ const Form = (props) => {
           type="time"
           name="time"
           className="u-full-width"
+          onChange={handleChange}
         />
 
         <label>Symptoms</label>
         <textarea
           className="u-full-width"
           name="symptoms"
+          placeholder="Describe The Symptoms"
+          onChange={handleChange}
         >
         </textarea>
 
