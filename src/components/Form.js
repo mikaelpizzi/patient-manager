@@ -12,8 +12,15 @@ const Form = (props) => {
   })
 
   const handleChange = e => {
-    console.log(e.target.value);
+    updateAppointment({
+      ...appointment,
+      [e.target.name]: e.target.value
+    })
+    // console.log(e.target);
   }
+
+  // Extract the values
+  const { name, owner, date, time, symptoms } = appointment;
 
   return ( 
 		<Fragment>
@@ -26,6 +33,7 @@ const Form = (props) => {
           className="u-full-width"
           placeholder="Pet's Name"
           onChange={handleChange}
+          value={name}
         />
 
         <label>Owner's Name</label>
@@ -35,6 +43,7 @@ const Form = (props) => {
           className="u-full-width"
           placeholder="Pet Owner's Name"
           onChange={handleChange}
+          value={owner}
         />
 
         <label>Date</label>
@@ -43,6 +52,7 @@ const Form = (props) => {
           name="date"
           className="u-full-width"
           onChange={handleChange}
+          value={date}
         />
 
         <label>Check In Time</label>
@@ -51,6 +61,7 @@ const Form = (props) => {
           name="time"
           className="u-full-width"
           onChange={handleChange}
+          value={time}
         />
 
         <label>Symptoms</label>
@@ -59,6 +70,7 @@ const Form = (props) => {
           name="symptoms"
           placeholder="Describe The Symptoms"
           onChange={handleChange}
+          value={symptoms}
         >
         </textarea>
 
