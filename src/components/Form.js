@@ -4,12 +4,16 @@ const Form = (props) => {
   // Create appointments' state
 
   const [appointment, updateAppointment] = useState({
-    name: '',
+    pet: '',
     owner: '',
     date: '',
     time: '',
     symptoms: ''
   })
+
+  // Error showing state
+
+  const [ error, updateError ] = useState(false);
 
   const handleChange = e => {
     updateAppointment({
@@ -20,13 +24,19 @@ const Form = (props) => {
   }
 
   // Extract the values
-  const { name, owner, date, time, symptoms } = appointment;
+  const { pet, owner, date, time, symptoms } = appointment;
 
   // When user submits the form
   const submitAppointment = e => {
     e.preventDefault();
 
     // Validate
+
+    if (pet.trim() === '' || owner.trim() === '' || date.trim() === '' || time.trim() === '' || symptoms.trim() === '') {
+      updateError(true);
+      return;
+    }
+
 
     // Assign ID
 
@@ -39,6 +49,10 @@ const Form = (props) => {
 		<Fragment>
       <h2>Create Appointment</h2>
 
+      {error
+      ? <p className="alerta-error">All fields are required</p>
+      : null}
+
       <form
         onSubmit={submitAppointment}
       >
@@ -49,7 +63,7 @@ const Form = (props) => {
           className="u-full-width"
           placeholder="Pet's Name"
           onChange={handleChange}
-          value={name}
+          defaultValue={pet}
         />
 
         <label>Owner's Name</label>
@@ -59,7 +73,7 @@ const Form = (props) => {
           className="u-full-width"
           placeholder="Pet Owner's Name"
           onChange={handleChange}
-          value={owner}
+          defaultValue={owner}
         />
 
         <label>Date</label>
@@ -68,7 +82,7 @@ const Form = (props) => {
           name="date"
           className="u-full-width"
           onChange={handleChange}
-          value={date}
+          defaultValue={date}
         />
 
         <label>Check In Time</label>
@@ -77,7 +91,7 @@ const Form = (props) => {
           name="time"
           className="u-full-width"
           onChange={handleChange}
-          value={time}
+          defaultValue={time}
         />
 
         <label>Symptoms</label>
@@ -86,7 +100,7 @@ const Form = (props) => {
           name="symptoms"
           placeholder="Describe The Symptoms"
           onChange={handleChange}
-          value={symptoms}
+          defaultValue={symptoms}
         >
         </textarea>
 
