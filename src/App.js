@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Fragment } from "react";
+import Appointment from "./components/Appointment";
 import Form from "./components/Form";
 
 
@@ -15,7 +16,6 @@ function App() {
       appointment
     ])
   }
-
   
   return (
     <Fragment>
@@ -28,7 +28,14 @@ function App() {
             />
           </div>
           <div className="one-half column">
-            2
+            <h2>Manage Your Appointments</h2>
+
+            {appointments.map(appointment => (
+              <Appointment
+                id={appointment.id} 
+                appointment={appointment}
+              />
+            ))}
           </div>
         </div>
       </div>
