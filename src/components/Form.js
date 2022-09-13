@@ -47,6 +47,13 @@ const Form = ({ createAppointment }) => {
     createAppointment(appointment)
 
     // Reset form
+    updateAppointment({
+      pet: '',
+      owner: '',
+      date: '',
+      time: '',
+      symptoms: ''
+    })
   }
 
   return ( 
@@ -67,7 +74,7 @@ const Form = ({ createAppointment }) => {
           className="u-full-width"
           placeholder="Pet's Name"
           onChange={handleChange}
-          defaultValue={pet}
+          value={pet}
         />
 
         <label>Owner's Name</label>
@@ -77,7 +84,7 @@ const Form = ({ createAppointment }) => {
           className="u-full-width"
           placeholder="Pet Owner's Name"
           onChange={handleChange}
-          defaultValue={owner}
+          value={owner}
         />
 
         <label>Date</label>
@@ -86,7 +93,7 @@ const Form = ({ createAppointment }) => {
           name="date"
           className="u-full-width"
           onChange={handleChange}
-          defaultValue={date}
+          value={date}
         />
 
         <label>Check In Time</label>
@@ -95,7 +102,7 @@ const Form = ({ createAppointment }) => {
           name="time"
           className="u-full-width"
           onChange={handleChange}
-          defaultValue={time}
+          value={time}
         />
 
         <label>Symptoms</label>
@@ -104,7 +111,7 @@ const Form = ({ createAppointment }) => {
           name="symptoms"
           placeholder="Describe The Symptoms"
           onChange={handleChange}
-          defaultValue={symptoms}
+          value={symptoms}
         >
         </textarea>
 
