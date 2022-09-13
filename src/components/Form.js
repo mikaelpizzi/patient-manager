@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { v4 as uuid } from 'uuid';
 
-const Form = (props) => {
+const Form = ({ createAppointment }) => {
   // Create appointments' state
 
   const [appointment, updateAppointment] = useState({
@@ -42,9 +42,9 @@ const Form = (props) => {
 
     // Assign ID
     appointment.id = uuid();
-    console.log(appointment);
 
     // Create appointment
+    createAppointment(appointment)
 
     // Reset form
   }

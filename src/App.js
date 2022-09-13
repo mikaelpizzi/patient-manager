@@ -9,6 +9,12 @@ function App() {
   const [appointments, storeAppointment] = useState([]);
   
   // Function to store new appointment keeping track of previous ones
+  const createAppointment = appointment => {
+    storeAppointment([
+      ...appointments,
+      appointment
+    ])
+  }
 
   
   return (
@@ -17,7 +23,9 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="one-half column">
-            <Form />
+            <Form 
+            createAppointment={createAppointment}
+            />
           </div>
           <div className="one-half column">
             2
