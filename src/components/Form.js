@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import uuid from "uuid/v4"
+import { v4 as uuid } from 'uuid';
 
 const Form = (props) => {
   // Create appointments' state
@@ -42,6 +42,7 @@ const Form = (props) => {
 
     // Assign ID
     appointment.id = uuid();
+    console.log(appointment);
 
     // Create appointment
 

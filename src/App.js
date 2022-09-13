@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Fragment } from "react";
 import Form from "./components/Form";
 
+
 function App() {
+
+  // Appointment array  
+  const [appointments, storeAppointment] = useState([]);
+  
+  // Function to store new appointment keeping track of previous ones
+
+  
   return (
     <Fragment>
       <h1>Patient Manager</h1>
