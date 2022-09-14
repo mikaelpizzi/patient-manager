@@ -22,6 +22,9 @@ function App() {
     const afterDelete = appointments.filter(appointment => appointment.id !== id);
     updateAppointments(afterDelete);
   }
+
+  // Conditional message
+  const title = appointments.length === 0 ? "There Are No appointments" : "Manage Your Appointments"
   
   return (
     <Fragment>
@@ -34,7 +37,7 @@ function App() {
             />
           </div>
           <div className="one-half column">
-            <h2>Manage Your Appointments</h2>
+            <h2>{title}</h2>
 
             {appointments.map(appointment => (
               <Appointment
