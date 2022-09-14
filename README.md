@@ -2,6 +2,9 @@
 
 A patient manager web app using React
 
+Do you want to take a look at the already deployed application?:
+[**Try app**](https://patient-manager-mikaelpizzi.netlify.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
