@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import Appointment from "./components/Appointment";
 import Form from "./components/Form";
@@ -6,8 +6,27 @@ import Form from "./components/Form";
 
 function App() {
 
+  // Store appointments in Local Storage
+  let initialAppointments = JSON.parse(localStorage.getItem("appointments"));
+  
+  if (!initialAppointments) {
+    initialAppointments = [];
+  }
+  
   // Appointment array  
-  const [appointments, updateAppointments] = useState([]);
+  const [appointments, updateAppointments] = useState(initialAppointments);
+
+  // Store when useEffect is triggered
+  useEffect( () => {
+    let initialAppointments = JSON.parse(localStorage.getItem("appointments"));
+
+    if (initialAppointments) {
+      localStorage.setItem("appointments", JSON.stringify(appointments));
+    } else {
+      localStorage.setItem("appointments", JSON.stringify([]));
+    }
+  }, [appointments] )
+  
   
   // Function to store new appointment keeping track of previous ones
   const createAppointment = appointment => {
