@@ -7,14 +7,20 @@ import Form from "./components/Form";
 function App() {
 
   // Appointment array  
-  const [appointments, storeAppointment] = useState([]);
+  const [appointments, updateAppointments] = useState([]);
   
   // Function to store new appointment keeping track of previous ones
   const createAppointment = appointment => {
-    storeAppointment([
+    updateAppointments([
       ...appointments,
       appointment
     ])
+  }
+
+  // Delete appointment by id
+  const deleteAppointment = id => {
+    const afterDelete = appointments.filter(appointment => appointment.id !== id);
+    updateAppointments(afterDelete);
   }
   
   return (
@@ -34,6 +40,7 @@ function App() {
               <Appointment
                 id={appointment.id} 
                 appointment={appointment}
+                deleteAppointment={deleteAppointment}
               />
             ))}
           </div>
