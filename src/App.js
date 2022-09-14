@@ -60,7 +60,7 @@ function App() {
 
             {appointments.map(appointment => (
               <Appointment
-                id={appointment.id} 
+                key={appointment.id} 
                 appointment={appointment}
                 deleteAppointment={deleteAppointment}
               />
